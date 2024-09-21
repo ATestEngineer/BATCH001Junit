@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bu yapılandırma dosyası, loglama için kullanılan ayarları tanımlar. Log kayıtlarını hem konsola hem de dosyaya yazdırmayı sağlar. -->
+<Configuration status="INFO">
+    <!-- Appenders bölümü, log mesajlarının nasıl ve nereye yazdırılacağını tanımlar. -->
+    <Appenders>
+        <!-- Log kayıtlarını konsola yazdırır. -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- Log mesajlarının formatını tanımlar. Saat, log seviyesi, logger adı ve mesajı içerir. -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <!-- Log kayıtlarını "selenium.log" adlı dosyaya ekler. Loglar bu dosyaya sürekli olarak eklenir. -->
+        <File name="File" fileName="selenium.log" append="true">
+            <!-- Log mesajlarının formatını tanımlar. Tarih, saat, log seviyesi, sınıf adı ve mesajı içerir. -->
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss} %-5level %c %m%n" />
+        </File>
+    </Appenders>
+    <!-- Loggers bölümü, hangi log seviyelerinin aktif olacağını ve hangi appender'ların kullanılacağını tanımlar. -->
+    <Loggers>
+        <!-- Root logger tüm loglama işlemlerinin temelini oluşturur. -->
+        <Root level="INFO">
+            <!-- Console appender'ını kullanarak logları konsola yazdırır. -->
+            <AppenderRef ref="Console" />
+            <!-- File appender'ını kullanarak logları dosyaya yazdırır. -->
+            <AppenderRef ref="File" />
+        </Root>
+    </Loggers>
+</Configuration>
